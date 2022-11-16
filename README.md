@@ -107,6 +107,15 @@ Further informations in https://docs.bigbluebutton.org/2.6/dev.html
 ---
 ## HTML5 client
 
+### Prepare
+Replace the value for `wsUrl` in `private/config/settings.yml` with the value from `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`.
+More infos see the official [documentation](https://docs.bigbluebutton.org/2.5/dev.html#developing-the-html5-client).
+```
+sed -i "s,wsUrl: .*,wsUrl: $(grep wsUrl /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml | awk '{print $2}'),g" private/config/settings.yml
+```
+
+
+
 #### Running HTML5
 ```
 cd ~/src/bigbluebutton-html5/
